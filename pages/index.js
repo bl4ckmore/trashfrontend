@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://trashapi-1.onrender.com";
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
