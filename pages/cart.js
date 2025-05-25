@@ -1,5 +1,7 @@
 import { useCart } from '../context/CartContext';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function CartPage() {
   const { cart, removeFromCart, clearCart } = useCart();
 
@@ -16,8 +18,9 @@ export default function CartPage() {
           {cart.map((item) => (
             <div key={item.id} className="flex items-center justify-between border p-4 rounded shadow-sm">
               <div className="flex items-center gap-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`http://localhost:5000/uploads/${item.image_url}`}
+                  src={`${BASE_URL}/uploads/${item.image_url}`}
                   alt={item.name}
                   className="w-20 h-20 object-cover rounded"
                   onError={(e) => {
