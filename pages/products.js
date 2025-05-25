@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
@@ -69,6 +69,7 @@ export default function ProductsPage() {
 
       {loading ? (
         <div className="flex justify-center py-20">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/chatgptLogo.png"
             alt="Loading..."
@@ -86,6 +87,7 @@ export default function ProductsPage() {
               className="bg-white p-4 rounded-lg shadow hover:shadow-xl transition-all flex flex-col"
             >
               <Link href={`/product/${product.id}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={
                     product.image_url?.startsWith("/uploads")

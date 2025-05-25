@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { AuthContext } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
-import { useContext } from "react";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
