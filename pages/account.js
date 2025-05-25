@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import axios from 'axios';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function AccountPage() {
   const { user, login, logout } = useAuth();
   const router = useRouter();
@@ -17,8 +19,8 @@ export default function AccountPage() {
     try {
       setLoading(true);
       const endpoint = isRegister
-        ? 'http://localhost:5000/api/auth/register'
-        : 'http://localhost:5000/api/auth/login';
+        ? `${BASE_URL}/api/auth/register`
+        : `${BASE_URL}/api/auth/login`;
 
       const res = await axios.post(endpoint, { email, password });
       login(res.data.user);
@@ -91,8 +93,12 @@ export default function AccountPage() {
         <h1 className="text-2xl font-bold mb-4">Welcome, {user.email}</h1>
 
         <div className="text-left mb-6">
-          <p className="text-gray-700 text-sm">Email: <span className="font-medium">{user.email}</span></p>
-          <p className="text-gray-700 text-sm">Role: <span className="font-medium capitalize">{user.role}</span></p>
+          <p className="text-gray-700 text-sm">
+            Email: <span className="font-medium">{user.email}</span>
+          </p>
+          <p className="text-gray-700 text-sm">
+            Role: <span className="font-medium capitalize">{user.role}</span>
+          </p>
         </div>
 
         <button
