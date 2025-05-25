@@ -1,9 +1,10 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { AuthContext } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
+import { useContext } from "react";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -34,7 +35,7 @@ export default function HomePage() {
         style={{ backgroundImage: "url('/hero.png')" }}
       >
         <h1 className="text-4xl md:text-5xl font-bold drop-shadow-xl">
-          Giorgi's Ecommerce
+          Giorgi&apos;s Ecommerce
         </h1>
         <Link href="/products">
           <button className="mt-4 bg-white text-black font-semibold px-6 py-2 rounded hover:bg-gray-200 transition">
@@ -51,6 +52,7 @@ export default function HomePage() {
 
         {loading ? (
           <div className="flex justify-center items-center py-20">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/chatgptLogo.png"
               alt="Loading..."
@@ -69,6 +71,7 @@ export default function HomePage() {
                 className="bg-white p-4 rounded-lg shadow hover:shadow-xl transition-all duration-300 flex flex-col items-center"
               >
                 <div className="w-full h-40 mb-4 rounded overflow-hidden bg-gray-100">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <motion.img
                     src={`${BASE_URL}/uploads/${product.image_url}`}
                     alt={product.name}
@@ -108,8 +111,8 @@ export default function HomePage() {
         <p className="text-gray-300 mb-4 max-w-2xl mx-auto leading-relaxed">
           Welcome to <strong>GiorgiShop</strong>, your trusted place for premium
           products. We focus on high quality, fast delivery, and top-tier
-          support. Whether you're shopping for yourself or gifting someone
-          special, you'll find what you love.
+          support. Whether you&apos;re shopping for yourself or gifting someone
+          special, you&apos;ll find what you love.
         </p>
         <p className="text-gray-400 mb-6 max-w-xl mx-auto text-sm">
           Sign up now and stay updated on the latest products, limited-time
