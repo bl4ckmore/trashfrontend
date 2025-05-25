@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -89,11 +89,7 @@ export default function ProductsPage() {
               <Link href={`/product/${product.id}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={
-                    product.image_url?.startsWith("/uploads")
-                      ? `${BASE_URL}${product.image_url}`
-                      : `${BASE_URL}/uploads/${product.image_url}`
-                  }
+                  src={`${BASE_URL}/uploads/${product.image_url}`}
                   alt={product.name}
                   className="h-40 w-full object-cover rounded mb-4"
                   onError={(e) => {

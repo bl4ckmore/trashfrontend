@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useCart } from '@/context/CartContext';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL}/...`
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function ProductPage() {
   const router = useRouter();
@@ -23,19 +23,16 @@ export default function ProductPage() {
 
   if (!product) return <div className="p-6">Loading...</div>;
 
-  const imagePath = product.image_url?.startsWith('/uploads')
-    ? `${BASE_URL}${product.image_url}`
-    : `${BASE_URL}/uploads/${product.image_url}`;
-
   return (
     <div className="p-6 max-w-3xl mx-auto">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={imagePath}
+        src={`${BASE_URL}/uploads/${product.image_url}`}
         alt={product.name}
         className="w-full h-80 object-cover rounded shadow"
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = '/fallback.jpg'; // must exist in /public/
+          e.target.src = '/fallback.jpg';
         }}
       />
       <h1 className="text-3xl font-bold mt-4">{product.name}</h1>
